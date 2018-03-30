@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="microservice-config-server" />
+        <module name="microservice-consume-movie" />
+        <module name="microservice-consume-movie-feign" />
+        <module name="microservice-consume-movie-feign-hystrix" />
+        <module name="microservice-consume-movie-feign-hystrix-turbine-mq" />
+        <module name="microservice-consume-movie-feign-hystrix2" />
+        <module name="microservice-consume-movie-feign-hystrix3" />
+        <module name="microservice-consume-movie-ribbon" />
+        <module name="microservice-consume-movie-ribbon-ribbon" />
+        <module name="microservice-discovery-eureka" />
+        <module name="microservice-file-upload" />
+        <module name="microservice-getway-zuul" />
+        <module name="microservice-getway-zuul-aggregation" />
+        <module name="microservice-getway-zuul-fallback" />
+        <module name="microservice-getway-zuul-file-upload" />
+        <module name="microservice-getway-zuul-filter" />
+        <module name="microservice-getway-zuul-reg-exp" />
+        <module name="microservice-hystrix-dashboard" />
+        <module name="microservice-hystrix-turbine" />
+        <module name="microservice-hystrix-turbine-mq" />
+        <module name="microservice-provider-user" />
+        <module name="microservice-sidecar" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Micro-service-learning" target="1.8" />
+      <module name="microservice-config-server" target="1.8" />
+      <module name="microservice-consume-movie" target="1.8" />
+      <module name="microservice-consume-movie-feign" target="1.8" />
+      <module name="microservice-consume-movie-feign-hystrix" target="1.8" />
+      <module name="microservice-consume-movie-feign-hystrix-turbine-mq" target="1.8" />
+      <module name="microservice-consume-movie-feign-hystrix2" target="1.8" />
+      <module name="microservice-consume-movie-feign-hystrix3" target="1.8" />
+      <module name="microservice-consume-movie-feign-ribbon" target="1.8" />
+      <module name="microservice-consume-movie-ribbon" target="1.8" />
+      <module name="microservice-consume-movie-ribbon-ribbon" target="1.8" />
+      <module name="microservice-discovery-eureka" target="1.8" />
+      <module name="microservice-file-upload" target="1.8" />
+      <module name="microservice-getway-zuul" target="1.8" />
+      <module name="microservice-getway-zuul-aggregation" target="1.8" />
+      <module name="microservice-getway-zuul-fallback" target="1.8" />
+      <module name="microservice-getway-zuul-file-upload" target="1.8" />
+      <module name="microservice-getway-zuul-filter" target="1.8" />
+      <module name="microservice-getway-zuul-reg-exp" target="1.8" />
+      <module name="microservice-hystrix-dashboard" target="1.8" />
+      <module name="microservice-hystrix-turbine" target="1.8" />
+      <module name="microservice-hystrix-turbine-mq" target="1.8" />
+      <module name="microservice-provider-user" target="1.8" />
+      <module name="microservice-sidecar" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

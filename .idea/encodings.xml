@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-config/microservice-config-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-consume/microservice-consume-movie" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-consume/microservice-consume-movie-feign" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-consume/microservice-consume-movie-feign-hystrix" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-consume/microservice-consume-movie-feign-hystrix-turbine-mq" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-consume/microservice-consume-movie-feign-hystrix2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-consume/microservice-consume-movie-feign-hystrix3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-consume/microservice-consume-movie-ribbon" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-discovery-eureka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-file-upload" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-getway/microservice-getway-zuul" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-getway/microservice-getway-zuul-aggregation" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-getway/microservice-getway-zuul-fallback" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-getway/microservice-getway-zuul-file-upload" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-getway/microservice-getway-zuul-filter" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-getway/microservice-getway-zuul-reg-exp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-hystrix-dashboard" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-hystrix-turbine" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-hystrix-turbine-mq" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-provider-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-sidecar" charset="UTF-8" />
+  </component>
+</project>
