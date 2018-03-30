@@ -6,6 +6,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/microservice-provider-user/pom.xml" />
         <option value="$PROJECT_DIR$/microservice-consume-movie-ribbon/pom.xml" />
+        <option value="$PROJECT_DIR$/microservice-config/microservice-config-client/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
