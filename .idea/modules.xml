@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Micro-service-learning.iml" filepath="$PROJECT_DIR$/Micro-service-learning.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-config/microservice-config-client/microservice-config-client.iml" filepath="$PROJECT_DIR$/microservice-config/microservice-config-client/microservice-config-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-config/microservice-config-client-refresh-cloud-bus/microservice-config-client-refresh-cloud-bus.iml" filepath="$PROJECT_DIR$/microservice-config/microservice-config-client-refresh-cloud-bus/microservice-config-client-refresh-cloud-bus.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-config/microservice-config-server/microservice-config-server.iml" filepath="$PROJECT_DIR$/microservice-config/microservice-config-server/microservice-config-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-consume/microservice-consume-movie/microservice-consume-movie.iml" filepath="$PROJECT_DIR$/microservice-consume/microservice-consume-movie/microservice-consume-movie.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-consume/microservice-consume-movie-feign/microservice-consume-movie-feign.iml" filepath="$PROJECT_DIR$/microservice-consume/microservice-consume-movie-feign/microservice-consume-movie-feign.iml" />

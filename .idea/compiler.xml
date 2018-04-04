@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="microservice-config-client" />
+        <module name="microservice-config-client-refresh-cloud-bus" />
         <module name="microservice-config-server" />
         <module name="microservice-consume-movie" />
         <module name="microservice-consume-movie-feign" />
@@ -34,6 +35,7 @@
     <bytecodeTargetLevel>
       <module name="Micro-service-learning" target="1.8" />
       <module name="microservice-config-client" target="1.8" />
+      <module name="microservice-config-client-refresh-cloud-bus" target="1.8" />
       <module name="microservice-config-server" target="1.8" />
       <module name="microservice-consume-movie" target="1.8" />
       <module name="microservice-consume-movie-feign" target="1.8" />

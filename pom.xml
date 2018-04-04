@@ -39,6 +39,7 @@
         <!--统一配置中心-->
         <module>microservice-config/microservice-config-server</module>
         <module>microservice-config/microservice-config-client</module>
+        <module>microservice-config/microservice-config-client-refresh-cloud-bus</module>
 
     </modules>
     <packaging>pom</packaging>

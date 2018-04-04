@@ -4,5 +4,6 @@
     <mapping directory="" vcs="svn" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/microservice-config/microservice-config-client" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/microservice-config/microservice-config-client-refresh-cloud-bus" vcs="svn" />
   </component>
 </project>
