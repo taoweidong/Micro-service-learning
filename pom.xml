@@ -45,6 +45,9 @@
         <!--sleuth微服务追踪-->
         <module>microservice-sleuth/microservice-provider-user-trace</module>
         <module>microservice-sleuth/microservice-consume-movie-trace</module>
+        <module>microservice-sleuth/microservice-trace-zipkin-server</module>
+        <module>microservice-sleuth/microservice-provider-user-trace-zipkin</module>
+        <module>microservice-sleuth/microservice-consume-movie-trace-zipkin</module>
     </modules>
 
 
