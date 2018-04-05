@@ -38,7 +38,9 @@
         <module>microservice-getway/microservice-getway-zuul-aggregation</module>
         <!--统一配置中心-->
         <module>microservice-config/microservice-config-server</module>
+        <module>microservice-config/microservice-config-server-authenticating</module>
         <module>microservice-config/microservice-config-client</module>
+        <module>microservice-config/microservice-config-client-authenticating</module>
         <module>microservice-config/microservice-config-client-refresh-cloud-bus</module>
         <!--sleuth微服务追踪-->
         <module>microservice-sleuth/microservice-provider-user-trace</module>
