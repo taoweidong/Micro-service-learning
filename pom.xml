@@ -40,7 +40,9 @@
         <module>microservice-config/microservice-config-server</module>
         <module>microservice-config/microservice-config-client</module>
         <module>microservice-config/microservice-config-client-refresh-cloud-bus</module>
-
+        <!--sleuth微服务追踪-->
+        <module>microservice-sleuth/microservice-provider-user-trace</module>
+        <module>microservice-sleuth/microservice-consume-movie-trace</module>
     </modules>
 
 

@@ -13,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/microservice-consume/microservice-consume-movie-feign-hystrix2/microservice-consume-movie-feign-hystrix2.iml" filepath="$PROJECT_DIR$/microservice-consume/microservice-consume-movie-feign-hystrix2/microservice-consume-movie-feign-hystrix2.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-consume/microservice-consume-movie-feign-hystrix3/microservice-consume-movie-feign-hystrix3.iml" filepath="$PROJECT_DIR$/microservice-consume/microservice-consume-movie-feign-hystrix3/microservice-consume-movie-feign-hystrix3.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-consume/microservice-consume-movie-ribbon/microservice-consume-movie-ribbon.iml" filepath="$PROJECT_DIR$/microservice-consume/microservice-consume-movie-ribbon/microservice-consume-movie-ribbon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-consume-movie-trace/microservice-consume-movie-trace.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-consume-movie-trace/microservice-consume-movie-trace.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-discovery-eureka/microservice-discovery-eureka.iml" filepath="$PROJECT_DIR$/microservice-discovery-eureka/microservice-discovery-eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-file-upload/microservice-file-upload.iml" filepath="$PROJECT_DIR$/microservice-file-upload/microservice-file-upload.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-getway/microservice-getway-zuul/microservice-getway-zuul.iml" filepath="$PROJECT_DIR$/microservice-getway/microservice-getway-zuul/microservice-getway-zuul.iml" />
@@ -25,6 +26,7 @@
       <module fileurl="file://$PROJECT_DIR$/microservice-hystrix-turbine/microservice-hystrix-turbine.iml" filepath="$PROJECT_DIR$/microservice-hystrix-turbine/microservice-hystrix-turbine.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-hystrix-turbine-mq/microservice-hystrix-turbine-mq.iml" filepath="$PROJECT_DIR$/microservice-hystrix-turbine-mq/microservice-hystrix-turbine-mq.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-provider-user/microservice-provider-user.iml" filepath="$PROJECT_DIR$/microservice-provider-user/microservice-provider-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace/microservice-provider-user-trace.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace/microservice-provider-user-trace.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-sidecar/microservice-sidecar.iml" filepath="$PROJECT_DIR$/microservice-sidecar/microservice-sidecar.iml" />
     </modules>
   </component>
