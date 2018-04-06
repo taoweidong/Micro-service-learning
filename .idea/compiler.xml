@@ -21,6 +21,7 @@
         <module name="microservice-consume-movie-ribbon-ribbon" />
         <module name="microservice-consume-movie-trace" />
         <module name="microservice-consume-movie-trace-zipkin" />
+        <module name="microservice-consume-movie-trace-zipkin-stream" />
         <module name="microservice-discovery-eureka" />
         <module name="microservice-file-upload" />
         <module name="microservice-getway-zuul" />
@@ -35,8 +36,10 @@
         <module name="microservice-provider-user" />
         <module name="microservice-provider-user-trace" />
         <module name="microservice-provider-user-trace-zipkin" />
+        <module name="microservice-provider-user-trace-zipkin-stream" />
         <module name="microservice-sidecar" />
         <module name="microservice-trace-zipkin-server" />
+        <module name="microservice-trace-zipkin-server-stream" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -57,6 +60,7 @@
       <module name="microservice-consume-movie-ribbon-ribbon" target="1.8" />
       <module name="microservice-consume-movie-trace" target="1.8" />
       <module name="microservice-consume-movie-trace-zipkin" target="1.8" />
+      <module name="microservice-consume-movie-trace-zipkin-stream" target="1.8" />
       <module name="microservice-discovery-eureka" target="1.8" />
       <module name="microservice-file-upload" target="1.8" />
       <module name="microservice-getway-zuul" target="1.8" />
@@ -71,8 +75,10 @@
       <module name="microservice-provider-user" target="1.8" />
       <module name="microservice-provider-user-trace" target="1.8" />
       <module name="microservice-provider-user-trace-zipkin" target="1.8" />
+      <module name="microservice-provider-user-trace-zipkin-stream" target="1.8" />
       <module name="microservice-sidecar" target="1.8" />
       <module name="microservice-trace-zipkin-server" target="1.8" />
+      <module name="microservice-trace-zipkin-server-stream" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

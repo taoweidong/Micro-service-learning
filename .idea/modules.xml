@@ -17,6 +17,7 @@
       <module fileurl="file://$PROJECT_DIR$/microservice-consume/microservice-consume-movie-ribbon/microservice-consume-movie-ribbon.iml" filepath="$PROJECT_DIR$/microservice-consume/microservice-consume-movie-ribbon/microservice-consume-movie-ribbon.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-consume-movie-trace/microservice-consume-movie-trace.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-consume-movie-trace/microservice-consume-movie-trace.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-consume-movie-trace-zipkin/microservice-consume-movie-trace-zipkin.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-consume-movie-trace-zipkin/microservice-consume-movie-trace-zipkin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-consume-movie-trace-zipkin-stream/microservice-consume-movie-trace-zipkin-stream.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-consume-movie-trace-zipkin-stream/microservice-consume-movie-trace-zipkin-stream.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-discovery-eureka/microservice-discovery-eureka.iml" filepath="$PROJECT_DIR$/microservice-discovery-eureka/microservice-discovery-eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-file-upload/microservice-file-upload.iml" filepath="$PROJECT_DIR$/microservice-file-upload/microservice-file-upload.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-getway/microservice-getway-zuul/microservice-getway-zuul.iml" filepath="$PROJECT_DIR$/microservice-getway/microservice-getway-zuul/microservice-getway-zuul.iml" />
@@ -31,8 +32,10 @@
       <module fileurl="file://$PROJECT_DIR$/microservice-provider-user/microservice-provider-user.iml" filepath="$PROJECT_DIR$/microservice-provider-user/microservice-provider-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace/microservice-provider-user-trace.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace/microservice-provider-user-trace.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace-zipkin/microservice-provider-user-trace-zipkin.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace-zipkin/microservice-provider-user-trace-zipkin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace-zipkin-stream/microservice-provider-user-trace-zipkin-stream.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace-zipkin-stream/microservice-provider-user-trace-zipkin-stream.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-sidecar/microservice-sidecar.iml" filepath="$PROJECT_DIR$/microservice-sidecar/microservice-sidecar.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-trace-zipkin-server/microservice-trace-zipkin-server.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-trace-zipkin-server/microservice-trace-zipkin-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-trace-zipkin-server-stream/microservice-trace-zipkin-server-stream.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-trace-zipkin-server-stream/microservice-trace-zipkin-server-stream.iml" />
     </modules>
   </component>
 </project>
