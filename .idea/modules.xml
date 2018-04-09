@@ -31,11 +31,13 @@
       <module fileurl="file://$PROJECT_DIR$/microservice-hystrix-turbine-mq/microservice-hystrix-turbine-mq.iml" filepath="$PROJECT_DIR$/microservice-hystrix-turbine-mq/microservice-hystrix-turbine-mq.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-provider-user/microservice-provider-user.iml" filepath="$PROJECT_DIR$/microservice-provider-user/microservice-provider-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace/microservice-provider-user-trace.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace/microservice-provider-user-trace.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace-elk/microservice-provider-user-trace-elk.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace-elk/microservice-provider-user-trace-elk.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace-zipkin/microservice-provider-user-trace-zipkin.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace-zipkin/microservice-provider-user-trace-zipkin.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace-zipkin-stream/microservice-provider-user-trace-zipkin-stream.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace-zipkin-stream/microservice-provider-user-trace-zipkin-stream.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-sidecar/microservice-sidecar.iml" filepath="$PROJECT_DIR$/microservice-sidecar/microservice-sidecar.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-trace-zipkin-server/microservice-trace-zipkin-server.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-trace-zipkin-server/microservice-trace-zipkin-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-trace-zipkin-server-stream/microservice-trace-zipkin-server-stream.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-trace-zipkin-server-stream/microservice-trace-zipkin-server-stream.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-sleuth/microservice-trace-zipkin-server-stream-elasticsearch/microservice-trace-zipkin-server-stream-elasticsearch.iml" filepath="$PROJECT_DIR$/microservice-sleuth/microservice-trace-zipkin-server-stream-elasticsearch/microservice-trace-zipkin-server-stream-elasticsearch.iml" />
     </modules>
   </component>
 </project>

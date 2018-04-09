@@ -31,9 +31,11 @@
     <file url="file://$PROJECT_DIR$/microservice-sleuth/microservice-consume-movie-trace-zipkin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-sleuth/microservice-consume-movie-trace-zipkin-stream" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace-elk" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace-zipkin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-sleuth/microservice-provider-user-trace-zipkin-stream" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-sleuth/microservice-trace-zipkin-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-sleuth/microservice-trace-zipkin-server-stream" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-sleuth/microservice-trace-zipkin-server-stream-elasticsearch" charset="UTF-8" />
   </component>
 </project>

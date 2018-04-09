@@ -51,6 +51,9 @@
         <module>microservice-sleuth/microservice-trace-zipkin-server-stream</module>
         <module>microservice-sleuth/microservice-consume-movie-trace-zipkin-stream</module>
         <module>microservice-sleuth/microservice-provider-user-trace-zipkin-stream</module>
+        <module>microservice-sleuth/microservice-provider-user-trace-elk</module>
+        <module>microservice-sleuth/microservice-trace-zipkin-server-stream-elasticsearch</module>
+
     </modules>
 
 

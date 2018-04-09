@@ -35,11 +35,13 @@
         <module name="microservice-hystrix-turbine-mq" />
         <module name="microservice-provider-user" />
         <module name="microservice-provider-user-trace" />
+        <module name="microservice-provider-user-trace-elk" />
         <module name="microservice-provider-user-trace-zipkin" />
         <module name="microservice-provider-user-trace-zipkin-stream" />
         <module name="microservice-sidecar" />
         <module name="microservice-trace-zipkin-server" />
         <module name="microservice-trace-zipkin-server-stream" />
+        <module name="microservice-trace-zipkin-server-stream-elasticsearch" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -74,11 +76,13 @@
       <module name="microservice-hystrix-turbine-mq" target="1.8" />
       <module name="microservice-provider-user" target="1.8" />
       <module name="microservice-provider-user-trace" target="1.8" />
+      <module name="microservice-provider-user-trace-elk" target="1.8" />
       <module name="microservice-provider-user-trace-zipkin" target="1.8" />
       <module name="microservice-provider-user-trace-zipkin-stream" target="1.8" />
       <module name="microservice-sidecar" target="1.8" />
       <module name="microservice-trace-zipkin-server" target="1.8" />
       <module name="microservice-trace-zipkin-server-stream" target="1.8" />
+      <module name="microservice-trace-zipkin-server-stream-elasticsearch" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
