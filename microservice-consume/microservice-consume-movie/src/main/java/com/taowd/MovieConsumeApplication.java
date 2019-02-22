@@ -10,12 +10,12 @@ import org.springframework.web.client.RestTemplate;
 @EnableEurekaClient
 public class MovieConsumeApplication {
 
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
 
-    public static void main(String[] args) {
-        SpringApplication.run(MovieConsumeApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(MovieConsumeApplication.class, args);
+	}
 }
