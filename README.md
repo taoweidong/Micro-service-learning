@@ -1,6 +1,6 @@
 # SpringCloud微服务学习笔记
 
-项目地址： https://github.com/TaciturnK/Micro-service-learning
+项目地址： https://github.com/taoweidong/Micro-service-learning
 
 ## 单体架构(Monolithic架构)
 
@@ -175,6 +175,24 @@ Hystrix依赖的隔离架构,如下图:
 
 https://www.cnblogs.com/yepei/p/7169127.html
 
+
+
+### 断路器聚合监控：Hystrix Turbine
+
+​	看单个的Hystrix Dashboard的数据并没有什么多大的价值，要想看这个系统的Hystrix Dashboard数据就需要用到Hystrix Turbine。Hystrix Turbine将每个服务Hystrix Dashboard数据进行了整合。Hystrix Turbine的使用非常简单，只需要引入相应的依赖和加上注解和配置就可以了。
+
+![这里写图片描述](http://img.blog.csdn.net/20170416140029540?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZm9yZXpw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+
+
+![这里写图片描述](http://img.blog.csdn.net/20170416140256754?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZm9yZXpw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+
+
+参考：https://www.cnblogs.com/allalongx/p/8383757.html
+
+
+
 ### 微服务网关：Zuul
 
 zuul 是netflix开源的一个API Gateway 服务器, 本质上是一个web servlet应用。
@@ -215,11 +233,65 @@ https://www.cnblogs.com/xd03122049/p/6036318.html
 
 
 
+### 配置中心：Spring Cloud Config
+
+​	Spring Cloud Config为分布式系统中的外部配置提供服务器和客户端支持。使用Config Server，您可以为所有环境中的应用程序管理其外部属性。它非常适合spring应用，也可以使用在其他语言的应用上。随着应用程序通过从开发到测试和生产的部署流程，您可以管理这些环境之间的配置，并确定应用程序具有迁移时需要运行的一切。服务器存储后端的默认实现使用git，因此它轻松支持标签版本的配置环境，以及可以访问用于管理内容的各种工具。
+
+Spring Cloud Config服务端特性
+
+- HTTP，为外部配置提供基于资源的API（键值对，或者等价的YAML内容）
+- 属性值的加密和解密（对称加密和非对称加密）
+- 通过使用@EnableConfigServer在Spring boot应用中非常简单的嵌入。
+
+Config客户端的特性（特指Spring应用）
+
+- 绑定Config服务端，并使用远程的属性源初始化Spring环境。
+- 属性值的加密和解密（对称加密和非对称加密）
+
+参考：https://www.cnblogs.com/boboooo/p/8796636.html?utm_source=debugrun&utm_medium=referral
+
+
+
+
+
+### 构建异构平台的服务注册与通信：sidecar
+
+​	Spring Cloud是目前非常流行的微服务化解决方案，它将Spring Boot的便捷开发和Netflix OSS的丰富解决方案结合起来。如我们所知，Spring Cloud不同于Dubbo，使用的是基于HTTP(s)的Rest服务来构建整个服务体系。
+ 	那么有没有可能使用一些非JVM语言，例如我们所熟悉的Node.js来开发一些Rest服务呢？当然是可以的。但是如果只有Rest服务，还不能接入Spring Cloud系统。我们还想使用起Spring Cloud提供的Eureka进行服务发现，使用Config Server做配置管理，使用Ribbon做客户端负载均衡。这个时候Spring sidecar就可以大显身手了。
+ 	Sidecar起源于Netflix Prana。他提供一个可以获取既定服务所有实例的信息(例如host，端口等)的http api。你也可以通过一个嵌入的Zuul，代理服务到从Eureka获取的相关路由节点。Spring Cloud Config Server可以直接通过主机查找或通过代理Zuul进行访问。
+
+​	需要注意的是你所开发的Node.js应用，必须去实现一个健康检查接口，来让Sidecar可以把这个服务实例的健康状况报告给Eureka。
+
+理解：简单来说sidecar就是可以让非java开发的微服务也可以在SpringCloud组建中使用，利用Eureka，Config等功能。
+
+
+
+参考：https://blog.csdn.net/shenzhen_zsw/article/details/81009238
+
+https://www.jianshu.com/p/2788b7220407
+
+
+
+### 微服务链路跟踪：Zipkin
+
+​	Zipkin是一款开源的分布式实时数据追踪系统（Distributed Tracking System），基于 Google Dapper的论文设计而来，由 Twitter 公司开发贡献。其主要功能是聚集来自各个异构系统的实时监控数据。分布式跟踪系统还有其他比较成熟的实现，例如：Naver的Pinpoint、Apache的HTrace、阿里的鹰眼Tracing、京东的Hydra、新浪的Watchman，美团点评的CAT，skywalking等。
+
+
+
+如图，在复杂的调用链路中假设存在一条调用链路响应缓慢，如何定位其中延迟高的服务呢？
+
+- 日志： 通过分析调用链路上的每个服务日志得到结果
+- zipkin：使用`zipkin`的`web  UI`可以一眼看出延迟高的服务
+
+![slow service](https://raw.githubusercontent.com/liaokailin/pic-repo/master/slow-service.png)
+
+参考：https://blog.csdn.net/qq924862077/article/details/80285536
+
 
 
 ## 项目实际测试
 
-### 基本微服务测试
+### 测试：基本微服务测试
 
 - 启动微服务注册中心Eureka：microservice-discovery-eureka  账户：admin  密码：admin123
 
@@ -237,7 +309,9 @@ https://www.cnblogs.com/xd03122049/p/6036318.html
 
 - 访问消费者接口3：http://127.0.0.1:9100/getUserInfo/1  此时进行服务间通讯，并且请求带有参数返回数据为对象
 
-### 客户端负载均衡服务测试
+- 对应脚本：microservice-test01.bat
+
+### 测试：客户端负载均衡服务测试
 
 - 启动微服务注册中心Eureka：microservice-discovery-eureka  账户：admin  密码：admin123
 
@@ -249,9 +323,11 @@ https://www.cnblogs.com/xd03122049/p/6036318.html
 
 - 启动服务消费者：microservice-consume-movie-feign
 
+- 对应脚本：microservice-test02.bat
 
 
-### 测试Hystrix熔断机制
+
+### 测试：Hystrix熔断机制
 
 - 启动Eureka注册中心：microservice-discovery-eureka
 - 启动服务提供者：microservice-provider-user
@@ -259,7 +335,7 @@ https://www.cnblogs.com/xd03122049/p/6036318.html
 
 
 
-### 测试Hystrix熔断控制面板
+### 测试：Hystrix熔断控制面板
 
 - 启动Eureka注册中心：microservice-discovery-eureka
 - 启动服务提供者：microservice-provider-user
