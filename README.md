@@ -252,6 +252,32 @@ Config客户端的特性（特指Spring应用）
 
 
 
+### 服务总线：spring cloud bus
+
+​	我们如果要去更新所有微服务的配置，在不重启的情况下去更新配置，只能依靠spring cloud config了，但是，是我们要一个服务一个服务的发送post请求，
+
+​	我们能受的了吗？这比之前的没配置中心好多了，那么我们如何继续避免挨个挨个的向服务发送Post请求来告知服务，你的配置信息改变了，需要及时修改内存中的配置信息。
+
+​	这时候我们就不要忘记消息队列的发布订阅模型。让所有为服务来订阅这个事件，当这个事件发生改变了，就可以通知所有微服务去更新它们的内存中的配置信息。这时Bus消息总线就能解决，你只需要在springcloud  Config Server端发出refresh，就可以触发所有微服务更新了。
+
+架构图：
+
+![img](https://images2018.cnblogs.com/blog/1202638/201805/1202638-20180521203126866-1299643942.png)
+
+原理：
+
+![img](https://images2017.cnblogs.com/blog/813442/201711/813442-20171114180921171-1000088884.png)
+
+
+
+
+
+参考：https://www.cnblogs.com/huangjuncong/p/9077099.html
+
+https://www.cnblogs.com/songxh-scse/p/7833963.html
+
+
+
 
 
 ### 构建异构平台的服务注册与通信：sidecar

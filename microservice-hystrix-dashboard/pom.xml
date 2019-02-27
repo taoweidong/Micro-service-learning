@@ -38,6 +38,8 @@
         </dependency>
 
     </dependencies>
-
+	<build>
+		<finalName>microservice-hystrix-dashboard</finalName>
+	</build>
 
 </project>

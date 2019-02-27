@@ -12,32 +12,6 @@ set jarPath=%nowPath%\jarPath
 @echo off    
 @echo 当前目录为:%cd%
 
-:: 启动注册中心
-@echo build microservice-discovery-eureka...
-cd microservice-discovery-eureka
-call mvn clean package -Dmaven.test.skip=true
-cd target
-copy microservice-discovery-eureka*.jar %jarPath%
-@echo 当前目录为:%cd%
-
-:: 服务提供者
-cd %nowPath%
-@echo build microservice-provider-user...
-cd microservice-provider-user
-call mvn clean package -Dmaven.test.skip=true
-cd target
-copy microservice-provider-user*.jar %jarPath%
-@echo 当前目录为:%cd%
-
-
-cd %nowPath%
-@echo build microservice-consume-movie-feign-hystrix...
-cd microservice-consume/microservice-consume-movie-feign-hystrix
-call mvn clean package -Dmaven.test.skip=true
-cd target
-copy microservice-consume-movie*.jar %jarPath%
-cd %nowPath%
-
 :: 监控项目
 cd %nowPath%
 @echo build microservice-hystrix-dashboard...
