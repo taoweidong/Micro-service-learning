@@ -388,6 +388,12 @@ https://www.jianshu.com/p/2788b7220407
 
 **Zuul路由规则：http://ZUUL_HOST:ZUUL_PORT/微服务在Eureka上的serviceId/**会被转发到serviceId对应的微服务上**
 
+![1551367415228](C:\Users\Taowd\AppData\Roaming\Typora\typora-user-images\1551367415228.png)
+
+
+
+
+
 
 ### 测试：负载均衡功能
 

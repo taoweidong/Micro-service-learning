@@ -58,7 +58,9 @@ start java -jar microservice-consume-movie-feign-hystrix.jar
 start java -jar microservice-hystrix-dashboard.jar
 
 
-start "C:\Users\Taowd\AppData\Local\Google\Chrome\Application\chrome.exe" http://127.0.0.1:9090/hystrix 
+c:
+cd C:\Users\Taowd\AppData\Local\Google\Chrome\Application
+start chrome.exe http://127.0.0.1:8761/
 
 
 :: ÔÝÍ££¬×èÖ¹³ÌÐòÍË³ö

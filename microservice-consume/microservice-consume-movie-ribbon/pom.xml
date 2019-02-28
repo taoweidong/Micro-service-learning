@@ -42,5 +42,7 @@
 
     </dependencies>
 
-
+	<build>
+		<finalName>microservice-consume-movie-ribbon</finalName>
+	</build>
 </project>

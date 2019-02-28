@@ -45,5 +45,10 @@ start java -jar microservice-provider-user.jar --server.port=9001
 start java -jar microservice-provider-user.jar --server.port=9002
 start java -jar microservice-consume-movie-feign.jar
 
+
+c:
+cd C:\Users\Taowd\AppData\Local\Google\Chrome\Application
+start chrome.exe http://127.0.0.1:8761/
+
 :: ÔÝÍ££¬×èÖ¹³ÌÐòÍË³ö
 pause   
