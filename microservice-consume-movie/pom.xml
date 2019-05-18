@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>microservice-provider-user</artifactId>
+    <groupId>com.taowd</groupId>
+    <artifactId>microservice-consume-movie</artifactId>
     <packaging>jar</packaging>
 
-    <name>microservice-provider-user</name>
-    <description>Demo project for Spring Boot</description>
+    <name>microservice-consume-movie</name>
+    <description>服务消费者,整合feign和Hystrix,使用fallbackFactory返回失败的原因</description>
 
     <parent>
         <groupId>com.taowd</groupId>
         <artifactId>Micro-service-learning</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <!--指定父工程的Pom文件的位置-->
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <properties>
@@ -23,13 +25,11 @@
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--Eureka客户端jar包 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -39,19 +39,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
-        <!-- 添加依赖-->
+        <!--声明式的Http客户端调用-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入
-                -->
-            <optional>true</optional>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
+
     </dependencies>
-    <build>
-        <finalName>microservice-provider-user</finalName>
-    </build>
+
 
 </project>

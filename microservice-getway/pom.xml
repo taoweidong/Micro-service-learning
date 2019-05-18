@@ -4,17 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>microservice-discovery-eureka</artifactId>
+    <artifactId>microservice-getway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>microservice-discovery-eureka</name>
-    <description>Demo project for Spring Boot</description>
+    <name>microservice-getway</name>
+    <description>Zuul微服务网关</description>
+
 
     <parent>
         <groupId>com.taowd</groupId>
         <artifactId>Micro-service-learning</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <!--指定父工程的Pom文件的位置 -->
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <properties>
@@ -24,21 +27,22 @@
     </properties>
 
     <dependencies>
-        <!--添加Eureka server的jar包 -->
+
+        <!--Api网关依赖 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
-        <!--添加安全认证的jar包 -->
+
+        <!--添加Eureka的jar包 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-security</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
     </dependencies>
 
     <build>
-        <finalName>microservice-discovery-eureka</finalName>
+        <finalName>microservice-getway-zuul</finalName>
     </build>
-
 </project>
