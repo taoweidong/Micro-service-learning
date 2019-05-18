@@ -31,6 +31,8 @@
         <module>microservice-provider-user</module>
         <!--服务消费者 -->
         <module>microservice-consume-movie</module>
+        <!--服务消费者 -->
+        <module>microservice-webapp</module>
 
 
     </modules>
