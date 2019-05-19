@@ -19,7 +19,7 @@ public interface UserFeignClient {
      *
      * @return
      */
-    // 两个坑：1. @GetMapping不支持   2. @PathVariable得设置value
+    // 两个坑：1. @GetMapping不支持   jquery-easyui. @PathVariable得设置value
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String sayHello();
 
