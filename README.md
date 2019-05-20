@@ -84,5 +84,6 @@
 4. 启动路由网关项目： microservice-getway
 5. 启动网站前台服务项目： microservice-webapp
 6. 访问：http://127.0.0.1:8761/  检查服务是否启动成功  账户：admin  密码：admin123
-7. 访问：http://localhost:8040/webApp#  检查网关转发前台是否正常
+7. 访问：http://localhost:8040/webApp#  检查网关转发前台是否正常  -- 错误
+   访问：http://localhost:8040/webApp/index.html#  正确
 8. 访问: http://localhost:8050/ 直接访问后端是否正常
