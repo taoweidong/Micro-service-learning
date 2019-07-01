@@ -6,6 +6,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 import cn.hutool.core.date.DateUtil;
 
+/**
+ * @author Taoweidong
+ */
 @SpringBootApplication
 // 增加Eureka客户端功能
 @EnableEurekaClient

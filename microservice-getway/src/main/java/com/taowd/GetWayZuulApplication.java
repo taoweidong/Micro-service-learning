@@ -6,9 +6,11 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 /**
  * 网关服务
+ * @EnableZuulProxy 开启Zuul网关功能
+ * @author Taoweidong
  */
 @SpringBootApplication
-@EnableZuulProxy // 开启Zuul网关功能
+@EnableZuulProxy
 public class GetWayZuulApplication {
 
 	/**
