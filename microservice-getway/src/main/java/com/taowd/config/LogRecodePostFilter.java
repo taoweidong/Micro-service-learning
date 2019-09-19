@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,12 @@ public class LogRecodePostFilter extends ZuulFilter {
 	 * 日志工具.
 	 */
 	private static final Logger LOGGER = LoggerFactory.getLogger(LogRecodePostFilter.class);
+
+	/**
+	 * 服务请求端口.
+	 */
+	@Value("${server.port}")
+	private String serverPort;
 
 	/**
 	 * 返回过滤器的类型
@@ -60,10 +67,12 @@ public class LogRecodePostFilter extends ZuulFilter {
 	public Object run() {
 
 		try {
+			// 获取上下文
 			RequestContext ctx = RequestContext.getCurrentContext();
+			// 获取HttpServletRequest
 			HttpServletRequest request = ctx.getRequest();
 			String interfaceMethod = request.getRequestURI();
-			LOGGER.info("请求url={}", interfaceMethod);
+			LOGGER.info("端口{}，请求url={}", serverPort, interfaceMethod);
 		} catch (Exception e) {
 			LOGGER.error("ZuulFilter Occur exception.", e);
 		}
