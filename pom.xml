@@ -24,9 +24,9 @@
 
     <modules>
         <!--服务注册中心 -->
-        <module>microservice-discovery-eureka</module>
+        <module>microservice-common/microservice-discovery-eureka</module>
         <!--API网关 -->
-        <module>microservice-getway</module>
+        <module>microservice-common/microservice-getway</module>
         <!--服务提供者 -->
         <module>microservice-provider-user</module>
         <!--服务消费者 -->
