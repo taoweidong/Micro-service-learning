@@ -10,13 +10,10 @@ import cn.hutool.core.date.DateUtil;
  * @author Taoweidong
  */
 @SpringBootApplication
-// 增加Eureka客户端功能
 @EnableEurekaClient
 public class UserProviderApplication {
 
 	public static void main(String[] args) {
-
-		System.out.println("HHHH" + DateUtil.today());
 
 		SpringApplication.run(UserProviderApplication.class, args);
 	}

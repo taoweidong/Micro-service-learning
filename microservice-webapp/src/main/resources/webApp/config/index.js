@@ -11,7 +11,16 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     // 前端跨域配置
-    proxyTable: {},
+    proxyTable: {
+      '/ms/user': {
+        // 测试环境
+        target: 'http://127.0.0.1:9000', // 接口域名
+        changeOrigin: true, //是否跨域
+        pathRewrite: {
+          '^/ms/user': '' //需要rewrite重写的,
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
