@@ -1,89 +1,156 @@
-# SpringCloud微服务学习笔记
+----------
+title: SpringCloud微服务笔记-Nginx实现网关反向代理
 
-项目地址： https://github.com/taoweidong/Micro-service-learning
+date: 2019-9-19 23:48:46
 
-## 单体架构(Monolithic架构)
+toc: true
 
-![](https://i.imgur.com/9mOffeI.png)
+tag: 
 
- 
+- 微服务
+- SpringCloud
+- Nginx
 
-**Monolithic比较适合小项目**
+----------
 
-### 单体架构优点：
+# 背景
+当前在SpringCloud微服务架构下，网关作为服务的入口尤为重要，一旦网关发生单点故障会导致整个服务集群瘫痪，为了保证网关的高可用可以通过Nginx的反向代理功能实现网关的高可用。
 
-- 开发简单直接，集中式管理,     基本不会重复开发功能都在本地，没有分布式的管理开销和调用开销。 
+项目源码：[https://github.com/taoweidong/Micro-service-learning/tree/SpringCloud-branch](https://github.com/taoweidong/Micro-service-learning/tree/SpringCloud-branch)
 
-### 单体架构缺点：
-
-- 开发效率低：所有的开发在一个项目改代码，递交代码相互等待，代码冲突不断
-- 代码维护难：代码功能耦合在一起，新人不知道何从下手
-- 部署不灵活：构建时间长，任何小修改必须重新构建整个项目，这个过程往往很长
-- 稳定性不高：一个微不足道的小问题，可以导致整个应用挂掉
-- 扩展性不够：无法满足高并发情况下的业务需求
-
-## 微服务架构 
-
-​       微服务是指开发一个单个小型的但有业务功能的服务，每个服务都有自己的处理和轻量通讯机制，可以部署在单个或多个服务器上。微服务也指一种种松耦合的、有一定的有界上下文的面向服务架构。也就是说，如果每个服务都要同时修改，那么它们就不是微服务，因为它们紧耦合在一起；如果你需要掌握一个服务太多的上下文场景使用条件，那么它就是一个有上下文边界的服务，这个定义来自DDD领域驱动设计。
-
-​       微服务架构模式（MicroservicesArchitecture Pattern）的目的是将大型的、复杂的、长期运行的应用程序构建为一组相互配合的服务，每个服务都可以很容易得局部改良。Micro这个词意味着每个服务都应该足够小，但是，这里的小不能用代码量来比较，而应该是从业务逻辑上比较——符合SRP原则的才叫微服务。
-
-![](https://i.imgur.com/UaYIwob.png)
-
- 
-
-相对于单体架构和SOA，它的主要特点是组件化、松耦合、自治、去中心化，体现在以下几个方面：
-
-- 一组小的服务 
-        服务粒度要小，而每个服务是针对一个单一职责的业务能力的封装，专注做好一件事情。
-- 独立部署运行和扩展 
-            每个服务能够独立被部署并运行在一个进程内。这种运行和部署方式能够赋予系统灵活的代码组织方式和发布节奏，使得快速交付和应对变化成为可能。
-- 独立开发和演化 
-       技术选型灵活，不受遗留系统技术约束。合适的业务问题选择合适的技术可以独立演化。服务与服务之间采取与语言无关的API进行集成。相对单体架构，微服务架构是更面向业务创新的一种架构模式。
-- 独立团队和自治 
-            团队对服务的整个生命周期负责，工作在独立的上下文中，自己决策自己治理，而不需要统一的指挥中心。团队和团队之间通过松散的社区部落进行衔接。
-
-​       我们可以看到整个微服务的思想就如我们现在面对信息爆炸、知识爆炸是一样的：通过解耦我们所做的事情，分而治之以减少不必要的损耗，使得整个复杂的系统和组织能够快速的应对变化。
-
- 
-
-### 微服务优点
-
-- 每个微服务都很小，这样能聚焦一个指定的业务功能或业务需求。 
-- 微服务能够被小团队单独开发，这个小团队是2到5人的开发人员组成。     
-- 微服务是松耦合的，是有功能意义的服务，无论是在开发阶段或部署阶段都是独立的。     
-- 微服务能使用不同的语言开发。 
-- 微服务允许容易且灵活的方式集成自动部署，通过持续集成工具，如Jenkins,     bamboo 。 
-- 一个团队的新成员能够更快投入生产。 
-- 微服务易于被一个开发人员理解，修改和维护，这样小团队能够更关注自己的工作成果。无需通过合作才能体现价值。     
-- 微服务允许你利用融合最新技术。 
-- 微服务只是业务逻辑的代码，不会和HTML,CSS     或其他界面组件混合。 
-- 微服务能够即时被要求扩展。 
-- 微服务能部署中低端配置的服务器上。 
-- 易于和第三方集成。 
-- 每个微服务都有自己的存储能力，可以有自己的数据库。也可以有统一数据库。     
-
-### 微服务架构的缺点
-
-- 微服务架构可能带来过多的操作。 
-- 需要DevOps技巧 (<http://en.wikipedia.org/wiki/DevOps>). 
-- 可能双倍的努力。 
-- 分布式系统可能复杂难以管理。 
-- 因为分布部署跟踪问题难。 
-- 当服务数量增加，管理复杂性增加。 
-
-## 项目目的
-
-> 学习SpringCloud 微服务框架，亲手一步步搭建环境
+# 项目架构图
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190919231711613.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3dlaWRvbmcx,size_16,color_FFFFFF,t_70)
+-  Nginx作为反向代理服务器，代理后端网关服务，通过Nginx自带的负载均衡算法进行转发
+-  Zull网关部署集群时，如果一台服务器发生故障，就会转发到另外一台机器上，服务正常访问，保证网关的高可用
 
 
-### 测试：Hystrix容错与监控功能
-1. 启动服务注册中心项目：microservice-discovery-eureka
-2. 启动服务提供者项目：microservice-provider-user
-3. 启动服务消费者项目：microservice-consume-movie
-4. 启动路由网关项目： microservice-getway
-5. 启动网站前台服务项目： microservice-webapp
-6. 访问：http://127.0.0.1:8761/  检查服务是否启动成功  账户：admin  密码：admin123
-7. 访问：http://localhost:8040/webApp#  检查网关转发前台是否正常  -- 错误
-   访问：http://localhost:8040/webApp/index.html#  正确
-8. 访问: http://localhost:8050/ 直接访问后端是否正常
+
+<!-- more -->
+
+# 具体部署
+## 修改本地Host文件
+（C:\Windows\System32\drivers\etc）编辑下面这个文件,修改里面ip对应的地址,因为要使用域名的不同来实现反向代理.
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190919232109812.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3dlaWRvbmcx,size_16,color_FFFFFF,t_70)![在这里插入图片描述](https://img-blog.csdnimg.cn/20190919232230704.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3dlaWRvbmcx,size_16,color_FFFFFF,t_70)
+## Nginx配置
+### 下载
+Nginx下载地址(Windows和Linux的配置一样)：[http://nginx.org/en/download.html](http://nginx.org/en/download.html)
+
+### 配置
+解压后，找到配置文件\nginx-1.12.2\conf\nginx.conf
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190919232545406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3dlaWRvbmcx,size_16,color_FFFFFF,t_70)详细配置
+
+    #user  nobody;
+    worker_processes  1;
+    
+    #error_log  logs/error.log;
+    #error_log  logs/error.log  notice;
+    #error_log  logs/error.log  info;
+    
+    #pid        logs/nginx.pid;
+    
+    
+    events {
+        worker_connections  1024;
+    }
+    
+    
+    http {
+        include       mime.types;
+        default_type  application/octet-stream;
+    
+        #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+        #                  '$status $body_bytes_sent "$http_referer" '
+        #                  '"$http_user_agent" "$http_x_forwarded_for"';
+    
+        #access_log  logs/access.log  main;
+    
+        sendfile        on;
+        #tcp_nopush     on;
+    
+        #keepalive_timeout  0;
+        keepalive_timeout  65;
+    
+        #gzip  on;
+    	
+    	#配置上游服务器网关端口集群
+    	upstream  backServer{
+    		# weight 权重：谁的的权重多，访问到哪个服务的几率就大
+    	    server 127.0.0.1:8040 weight=1;
+    	    server 127.0.0.1:8041 weight=1;
+    	}
+    
+        server {
+    		# 注意：如果使用域名进行反向代理的话，Nginx的端口必须是80
+            listen       80;
+    		# 入口地址-对应域名地址
+            server_name  www.taowd123.com;  
+    
+            location /ms {
+                ### 指定上游服务器负载均衡服务器
+    		    proxy_pass http://backServer/;
+                index  index.html index.htm;
+            }
+    
+            #error_page  404              /404.html;
+    
+            # redirect server error pages to the static page /50x.html
+            # 错误页面
+            error_page   500 502 503 504  /50x.html;
+            location = /50x.html {
+                root   html;
+            }
+          
+        }
+        # another virtual host using mix of IP-, name-, and port-based configuration
+        #
+        #server {
+        #    listen       8000;
+        #    listen       somename:8080;
+        #    server_name  somename  alias  another.alias;
+    
+        #    location / {
+        #        root   html;
+        #        index  index.html index.htm;
+        #    }
+        #}
+    
+    
+        # HTTPS server
+        #
+        #server {
+        #    listen       443 ssl;
+        #    server_name  localhost;
+    
+        #    ssl_certificate      cert.pem;
+        #    ssl_certificate_key  cert.key;
+    
+        #    ssl_session_cache    shared:SSL:1m;
+        #    ssl_session_timeout  5m;
+    
+        #    ssl_ciphers  HIGH:!aNULL:!MD5;
+        #    ssl_prefer_server_ciphers  on;
+    
+        #    location / {
+        #        root   html;
+        #        index  index.html index.htm;
+        #    }
+        #}
+    
+    }
+
+# 测试
+- 启动注册中心服务：[http://127.0.0.1:8761/](http://127.0.0.1:8761/)
+- 启动两个网关，端口分别为：8041，8040
+- 启动服务提供者，端口为：9000  已经在Zuul中配置
+- 启动Nginx服务
+  ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190919233930869.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3dlaWRvbmcx,size_16,color_FFFFFF,t_70)
+- 访问注册中心检查服务
+  ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190919234035730.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3dlaWRvbmcx,size_16,color_FFFFFF,t_70)
+- 使用网关端口直接访问正常
+  ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190919234159541.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3dlaWRvbmcx,size_16,color_FFFFFF,t_70)
+- 使用host中配置的域名直接访问，测试反向代理功能
+  ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190919234321552.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3dlaWRvbmcx,size_16,color_FFFFFF,t_70)访问多次，检查网关后台输出结果
+  ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190919234625182.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3dlaWRvbmcx,size_16,color_FFFFFF,t_70)
+
+# 参考
+[https://blog.csdn.net/kxj19980524/article/details/87868108](https://blog.csdn.net/kxj19980524/article/details/87868108)
