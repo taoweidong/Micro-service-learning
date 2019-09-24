@@ -1,24 +1,11 @@
-----------
-title: SpringCloud微服务笔记-Nginx实现网关反向代理
-
-date: 2019-9-19 23:48:46
-
-toc: true
-
-tag: 
-
-- 微服务
-- SpringCloud
-- Nginx
-
-----------
-
 # 背景
+
 当前在SpringCloud微服务架构下，网关作为服务的入口尤为重要，一旦网关发生单点故障会导致整个服务集群瘫痪，为了保证网关的高可用可以通过Nginx的反向代理功能实现网关的高可用。
 
 项目源码：[https://github.com/taoweidong/Micro-service-learning/tree/SpringCloud-branch](https://github.com/taoweidong/Micro-service-learning/tree/SpringCloud-branch)
 
 # 项目架构图
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190919231711613.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3dlaWRvbmcx,size_16,color_FFFFFF,t_70)
 -  Nginx作为反向代理服务器，代理后端网关服务，通过Nginx自带的负载均衡算法进行转发
 -  Zull网关部署集群时，如果一台服务器发生故障，就会转发到另外一台机器上，服务正常访问，保证网关的高可用
@@ -71,7 +58,7 @@ Nginx下载地址(Windows和Linux的配置一样)：[http://nginx.org/en/downloa
         keepalive_timeout  65;
     
         #gzip  on;
-    	
+    
     	#配置上游服务器网关端口集群
     	upstream  backServer{
     		# weight 权重：谁的的权重多，访问到哪个服务的几率就大
@@ -83,13 +70,19 @@ Nginx下载地址(Windows和Linux的配置一样)：[http://nginx.org/en/downloa
     		# 注意：如果使用域名进行反向代理的话，Nginx的端口必须是80
             listen       80;
     		# 入口地址-对应域名地址
-            server_name  www.taowd123.com;  
+            server_name  www.taowd123.com;
     
-            location /ms {
+            location /ms/ {
                 ### 指定上游服务器负载均衡服务器
     		    proxy_pass http://backServer/;
                 index  index.html index.htm;
             }
+    
+            #		  location /static {
+            #            ### 指定上游服务器负载均衡服务器
+            #		    proxy_pass http://127.0.0.1:8040/webApp/static/;
+            #            index  index.html index.htm;
+            #        }
     
             #error_page  404              /404.html;
     
@@ -99,7 +92,7 @@ Nginx下载地址(Windows和Linux的配置一样)：[http://nginx.org/en/downloa
             location = /50x.html {
                 root   html;
             }
-          
+    
         }
         # another virtual host using mix of IP-, name-, and port-based configuration
         #
