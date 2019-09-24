@@ -48,13 +48,15 @@ module.exports = {
 
   build: {
     // 修改构建后的文件存放位置，将其指定到SpringBoot的/resources/static目录中，与assetsRoot配置相对应   Template for index.html
-    index: path.resolve(__dirname, '../../static/index.html'),
+    index: path.resolve(__dirname, '../../microservice-webapp/src/main/resources/static/index.html'),
 
     // 修改构建后的文件存放位置，将其指定到SpringBoot的/resources/static目录中
-    assetsRoot: path.resolve(__dirname, '../../static'),
+    assetsRoot: path.resolve(__dirname, '../../microservice-webapp/src/main/resources/static'),
     // 静态文件目录名
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    // 注意：assetsPublicPath配置为生成的css和js文件引入时的前缀地址，
+    // 应该使用相对路径
+    assetsPublicPath: './',
 
     /**
      * Source Maps
