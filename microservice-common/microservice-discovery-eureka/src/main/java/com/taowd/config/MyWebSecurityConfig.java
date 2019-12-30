@@ -10,38 +10,38 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
+ *
  * @author Taoweidong
  */
 @Configuration
 public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Value("${security.user.name}")
-	private String user;
+    @Value("${security.user.name}")
+    private String user;
 
-	@Value("${security.user.password}")
-	private String password;
+    @Value("${security.user.password}")
+    private String password;
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
 
-		super.configure(http);
-		// CSRF允许跨域
-		http.csrf().disable().httpBasic();
-	}
+        super.configure(http);
+        // CSRF允许跨域
+        http.csrf().disable().httpBasic();
+    }
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
+    @Bean
+    public PasswordEncoder passwordEncoder() {
 
-		return new BCryptPasswordEncoder();
-	}
+        return new BCryptPasswordEncoder();
+    }
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		auth.inMemoryAuthentication().withUser(user).password(encoder.encode(password))
-				.roles("VIP1");
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        auth.inMemoryAuthentication().withUser(user).password(encoder.encode(password)).roles("VIP1");
 
-	}
+    }
 
 }

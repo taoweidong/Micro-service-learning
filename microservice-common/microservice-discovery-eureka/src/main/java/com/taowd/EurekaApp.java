@@ -6,15 +6,20 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 /**
  * Eureka服务注册中心
+ * 
  * @author Taoweidong
  */
 @SpringBootApplication
 @EnableEurekaServer
 public class EurekaApp {
 
-	public static void main(String[] args) {
-
-		SpringApplication.run(EurekaApp.class, args);
-	}
+    /**
+     * 启动类
+     * 
+     * @param args
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaApp.class, args);
+    }
 
 }
