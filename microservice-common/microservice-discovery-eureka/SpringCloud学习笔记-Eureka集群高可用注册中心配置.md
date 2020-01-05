@@ -121,7 +121,7 @@ eureka.server.eviction-interval-timer-in-ms=5000
 eureka.client.serviceUrl.defaultZone=http://admin:admin123@${eureka.instance.hostname}:${server.port}/eureka/
 ```
 
-## 修改host文件
+## 修改host文件-windows
 
 ```cmd
 # Copyright (c) 1993-2009 Microsoft Corp.
@@ -149,10 +149,24 @@ eureka.client.serviceUrl.defaultZone=http://admin:admin123@${eureka.instance.hos
 	127.0.0.1       slave
 ```
 
+## 修改host文件-linux
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2020010523344845.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200105233431744.png)
+
 ## 结构图
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191230225952251.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3dlaWRvbmcx,size_16,color_FFFFFF,t_70)
 ## 使用两个端口启动master和slave
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191230230041122.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3dlaWRvbmcx,size_16,color_FFFFFF,t_70)![在这里插入图片描述](https://img-blog.csdnimg.cn/20191230230059679.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhb3dlaWRvbmcx,size_16,color_FFFFFF,t_70)
+> 启动命令
+
+```powershell
+# 杀死注册中心进程
+ps -ef | grep microservice-getway-0.0.1-SNAPSHOT.jar | grep -v grep | awk '{print $2}' | xargs kill -9
+
+# 启动注册中心
+nohup java -jar microservice-discovery-eureka-0.0.1-SNAPSHOT.jar --server.port=8761 --spring.profiles.active=master  > eureka-master.log 2>&1 &
+nohup java -jar microservice-discovery-eureka-0.0.1-SNAPSHOT.jar --server.port=8762 --spring.profiles.active=slave  > eureka-slave.log 2>&1 &
+```
 
 # 参考
 - [https://blog.csdn.net/qq_38455201/article/details/80898045](https://blog.csdn.net/qq_38455201/article/details/80898045)
