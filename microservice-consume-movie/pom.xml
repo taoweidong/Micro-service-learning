@@ -14,7 +14,7 @@
   <parent>
     <groupId>com.taowd</groupId>
     <artifactId>Micro-service-learning</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <!--指定父工程的Pom文件的位置-->
     <relativePath>../pom.xml</relativePath>
   </parent>
@@ -47,7 +47,7 @@
       <artifactId>spring-cloud-starter-openfeign</artifactId>
     </dependency>
   </dependencies>
-  
+
   <build>
     <plugins>
       <!--注意此处如果不配置这个打包插件的话，可能会导致spring-boot-starter-actuator /info获取空信息-->

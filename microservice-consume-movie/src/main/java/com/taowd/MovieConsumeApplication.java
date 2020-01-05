@@ -6,23 +6,22 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
- * @author Taoweidong
- *         // @RibbonClient //启动Ribbon客户端负载均衡功能 参数name可指定微服务进行负载均衡
- *         // 注意：Feign中已经包含Ribbon此处不用专门开启Ribbon功能
- *         // @EnableHystrix
+ * @author Taoweidong <br/>
+ * @RibbonClient 启动Ribbon客户端负载均衡功能 参数name可指定微服务进行负载均衡 // 注意：Feign中已经包含Ribbon此处不用专门开启Ribbon功能<br/>
+ * @EnableHystrix
  */
 @SpringBootApplication
-@EnableEurekaClient // 启动Eureka客户端功能
-@EnableFeignClients // 启动Feign客户端功能
-
+@EnableEurekaClient
+@EnableFeignClients
 public class MovieConsumeApplication {
 
-	/**
-	 * 主函数
-	 * @param args
-	 */
-	public static void main(String[] args) {
+    /**
+     * 主函数
+     * 
+     * @param args
+     */
+    public static void main(String[] args) {
 
-		SpringApplication.run(MovieConsumeApplication.class, args);
-	}
+        SpringApplication.run(MovieConsumeApplication.class, args);
+    }
 }

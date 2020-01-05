@@ -15,7 +15,7 @@
   <parent>
     <groupId>com.taowd</groupId>
     <artifactId>Micro-service-learning</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <!--指定父工程的Pom文件的位置 -->
     <relativePath>../../pom.xml</relativePath>
   </parent>
@@ -25,6 +25,8 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
     <project.name>microservice-getway-zuul</project.name>
+    <!--打包是跳过测试-->
+    <maven.test.skip>true</maven.test.skip>
   </properties>
 
   <dependencies>
