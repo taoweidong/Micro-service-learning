@@ -1,6 +1,7 @@
 package com.taowd.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.taowd.entity.ReturnEntity;
 import com.taowd.entity.Token;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,16 +37,20 @@ public class UserController {
      * @return 用户信息
      */
     @PostMapping("/login")
-    public Map<String, Object> login(@RequestBody Map<String, Object> queryParam) {
-        System.out.println(JSON.toJSONString(queryParam));
-
-        Map<String, Object> resultMap = new HashMap<>(2);
-        resultMap.put("code", 20000);
+    public ReturnEntity login(@RequestBody Map<String, Object> queryParam) {
         Map<String, Object> data = new HashMap<>(2);
         data.put("token", "Taoweidong-token");
-        resultMap.put("data", data);
+        return ReturnEntity.success(data);
+    }
 
-        return resultMap;
+    /**
+     * 退出功能--鉴权.
+     *
+     * @return 用户信息
+     */
+    @PostMapping("/logout")
+    public ReturnEntity logout() {
+        return ReturnEntity.success("success");
     }
 
     /**
@@ -54,7 +59,7 @@ public class UserController {
      * @return 用户信息
      */
     @GetMapping("/info")
-    public Token info(String token) {
+    public ReturnEntity info(String token) {
 
         List<String> roles = new ArrayList<>();
         roles.add("admin");
@@ -62,7 +67,7 @@ public class UserController {
             .avatar("https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif").introduction(token)
             .roles(roles).build();
 
-        return token1;
+        return ReturnEntity.success(token1);
     }
 
     @GetMapping("/hello")
