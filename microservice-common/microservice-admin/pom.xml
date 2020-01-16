@@ -4,11 +4,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>microservice-provider-user</artifactId>
+  <artifactId>microservice-admin</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>microservice-provider-user</name>
-  <description>服务提供者</description>
+  <name>microservice-admin</name>
+  <description>微服务监控中心</description>
+
 
   <parent>
     <groupId>com.taowd</groupId>
@@ -20,36 +22,48 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
+    <project.name>microservice-admin</project.name>
+    <!--打包是跳过测试-->
+    <maven.test.skip>true</maven.test.skip>
   </properties>
 
   <dependencies>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-
-    <!--Eureka客户端jar包 -->
+    <!--添加Eureka的jar包 -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
 
+    <!--应用监控与管理:可以不间断的获取每个服务应用的各种指标，并根据这些指标信息来制定监控预警规则-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
-
-    <!-- 添加依赖-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入
-          -->
-      <optional>true</optional>
+      <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>de.codecentric</groupId>
+      <artifactId>spring-boot-admin-starter-server</artifactId>
+      <version>2.1.5</version>
+    </dependency>
+
+    <!--    <dependency>-->
+    <!--      <groupId>org.springframework.boot</groupId>-->
+    <!--      <artifactId>spring-boot-starter-security</artifactId>-->
+    <!--    </dependency>-->
+
+    <!-- 在管理界面中与 JMX-beans 进行交互所需要被依赖的 JAR -->
+    <dependency>
+      <groupId>org.jolokia</groupId>
+      <artifactId>jolokia-core</artifactId>
+    </dependency>
+
+
   </dependencies>
+
 
   <build>
     <plugins>
@@ -68,5 +82,6 @@
       </plugin>
     </plugins>
   </build>
+
 
 </project>

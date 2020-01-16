@@ -27,6 +27,9 @@
     <module>microservice-common/microservice-discovery-eureka</module>
     <!--API网关 -->
     <module>microservice-common/microservice-getway</module>
+    <!--微服务监控中心-->
+    <module>microservice-common/microservice-admin</module>
+
     <!--服务提供者 -->
     <module>microservice-provider-user</module>
     <!--服务消费者 -->
