@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+  <!--  springboot先读取logback.xml，然后加载yml/properties，再加载logback-spring.xml-->
+  <!--获取配置文件中的属性-->
+  <springProperty scope="context" name="springAppName" source="spring.application.name"/>
+  <!-- 定义日志文件 输入位置 -->
+  <property name="LOG_PATH" value="/opt/logs/${springAppName}"/>
+
+  <!-- You can override this to have a custom pattern -->
+  <property name="CONSOLE_LOG_PATTERN"
+    value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+
+  <!-- 控制台日志输出 -->
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <!-- Minimum logging level to be presented in the console logs-->
+      <level>DEBUG</level>
+    </filter>
+    <encoder>
+      <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+      <charset>utf8</charset>
+    </encoder>
+  </appender>
+
+  <!-- 一般信息按照每天生成日志文件 -->
+  <appender name="DEBUG_FILE"
+    class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>${LOG_PATH}/DEBUG.log</File>
+    <rollingPolicy
+      class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <!-- 每天一归档 -->
+      <fileNamePattern>${LOG_PATH}/info-%d{yyyyMMdd}.log.%i
+      </fileNamePattern>
+      <!-- 单个日志文件最多100MB, 30天的日志周期，最大不能超过10GB -->
+      <maxFileSize>100MB</maxFileSize>
+      <maxHistory>30</maxHistory>
+      <totalSizeCap>10GB</totalSizeCap>
+    </rollingPolicy>
+    <encoder>
+      <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+      <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{10}-%msg%n
+      </Pattern>
+    </encoder>
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>DEBUG</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+  </appender>
+
+  <!--错误信息按照每天生成日志文件 -->
+  <appender name="ERROR_FILE"
+    class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>ERROR</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <File>${LOG_PATH}/error.log</File>
+    <rollingPolicy
+      class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <!-- 每天一归档 -->
+      <fileNamePattern>${LOG_PATH}/error-%d{yyyyMMdd}.log.%i
+      </fileNamePattern>
+      <!-- 单个日志文件最多100MB, 30天的日志周期，最大不能超过10GB -->
+      <maxFileSize>100MB</maxFileSize>
+      <maxHistory>30</maxHistory>
+      <totalSizeCap>10GB</totalSizeCap>
+    </rollingPolicy>
+    <encoder>
+      <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+      <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{10}-%msg%n
+      </Pattern>
+    </encoder>
+  </appender>
+  <appender name="DEBUG_FILE"
+    class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>${LOG_PATH}/dev.log</File>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_PATH}/dev-%d{yyyyMMdd}.log.%i</fileNamePattern>
+      <maxFileSize>1MB</maxFileSize>
+      <maxHistory>3</maxHistory>
+      <totalSizeCap>1GB</totalSizeCap>
+    </rollingPolicy>
+    <layout>
+      <pattern>[%date{yyyy-MM-dd HH:mm:ss}] [%-5level] [%logger:%line]--%mdc{client} %msg%n
+      </pattern>
+    </layout>
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>DEBUG</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+  </appender>
+  <appender name="sql" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>${LOG_PATH}/sql.log</File>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_PATH}/log-%d{yyyyMMdd}.log.%i</fileNamePattern>
+      <maxFileSize>10MB</maxFileSize>
+      <maxHistory>30</maxHistory>
+      <totalSizeCap>2GB</totalSizeCap>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %class.%method - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- Appender to log to file in a JSON format -->
+  <!--  <appender name="logstash" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+  <!--    <file>${LOG_FILE}.json</file>-->
+  <!--    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+  <!--      <fileNamePattern>${LOG_FILE}.json.%d{yyyy-MM-dd}.gz</fileNamePattern>-->
+  <!--      <maxHistory>7</maxHistory>-->
+  <!--    </rollingPolicy>-->
+  <!--    <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">-->
+  <!--      <providers>-->
+  <!--        <timestamp>-->
+  <!--          <timeZone>UTC</timeZone>-->
+  <!--        </timestamp>-->
+  <!--        <pattern>-->
+  <!--          <pattern>-->
+  <!--            {-->
+  <!--            "severity": "%level",-->
+  <!--            "service": "${springAppName:-}",-->
+  <!--            "trace": "%X{X-B3-TraceId:-}",-->
+  <!--            "span": "%X{X-B3-SpanId:-}",-->
+  <!--            "parent": "%X{X-B3-ParentSpanId:-}",-->
+  <!--            "exportable": "%X{X-Span-Export:-}",-->
+  <!--            "pid": "${PID:-}",-->
+  <!--            "thread": "%thread",-->
+  <!--            "class": "%logger{40}",-->
+  <!--            "rest": "%message"-->
+  <!--            }-->
+  <!--          </pattern>-->
+  <!--        </pattern>-->
+  <!--      </providers>-->
+  <!--    </encoder>-->
+  <!--  </appender>-->
+
+  <!-- 关闭指定包的日志示例 -->
+  <!--  <logger name="com.alibaba.dubbo.monitor.dubbo" level="off"></logger>-->
+  <!--日志输出设置示例 -->
+<!--  <logger name="org.springframework" level="ERROR"/>-->
+
+  <!--邮件发送核心配置：控制哪些日志需要处理配置引用上文中配置的appender名称-->
+  <root level="INFO">
+    <appender-ref ref="console"/>
+    <!-- uncomment this to have also JSON logs -->
+    <!--    <appender-ref ref="logstash"/>-->
+    <appender-ref ref="DEBUG_FILE"/>
+  </root>
+</configuration>

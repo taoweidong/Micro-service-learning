@@ -43,12 +43,14 @@ AdminUI内置了Actuator服务，是对监控服务的图形化界面补充；
 - 状态更改的事件日志（非持久性）
 
 
+# 结合Eureka注册中心实践
+TODO  待完善
 
 # 参考
-- https://blog.csdn.net/weixin_34067049/article/details/88677682
-- https://blog.csdn.net/hubo_88/article/details/80671192
-- https://blog.csdn.net/u011976388/article/details/85395130
-- https://blog.csdn.net/typ1805/article/details/86289199
-- 监控中心内容介绍：https://blog.csdn.net/sunhuansheng/article/details/84939446
-- 邮件通知预警：https://blog.csdn.net/sunhuansheng/article/details/84935302
-- 自定义邮件预警内容：https://my.oschina.net/xiedeshou/blog/2051625
+- [https://blog.csdn.net/weixin_34067049/article/details/88677682](https://blog.csdn.net/weixin_34067049/article/details/88677682)
+- [https://blog.csdn.net/hubo_88/article/details/80671192](https://blog.csdn.net/hubo_88/article/details/80671192)
+- [https://blog.csdn.net/u011976388/article/details/85395130](https://blog.csdn.net/u011976388/article/details/85395130)
+- [https://blog.csdn.net/typ1805/article/details/86289199](https://blog.csdn.net/typ1805/article/details/86289199)
+- 监控中心内容介绍：[https://blog.csdn.net/sunhuansheng/article/details/84939446](https://blog.csdn.net/sunhuansheng/article/details/84939446)
+- 邮件通知预警：[https://blog.csdn.net/sunhuansheng/article/details/84935302](https://blog.csdn.net/sunhuansheng/article/details/84935302)
+- 自定义邮件预警内容：[https://my.oschina.net/xiedeshou/blog/2051625](https://my.oschina.net/xiedeshou/blog/2051625)
