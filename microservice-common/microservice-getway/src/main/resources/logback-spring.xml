@@ -6,11 +6,7 @@
   <!--获取配置文件中的属性-->
   <springProperty scope="context" name="springAppName" source="spring.application.name"/>
   <!-- 定义日志文件 输入位置 -->
-  <property name="LOG_PATH" value="/opt/logs/${springAppName}"/>
-
-  <!-- You can override this to have a custom pattern -->
-  <property name="CONSOLE_LOG_PATTERN"
-    value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+  <property name="LOG_PATH" value="/opt/logs/${springAppName:-.}"/>
 
   <!-- 控制台日志输出 -->
   <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
@@ -25,14 +21,13 @@
   </appender>
 
   <!-- 一般信息按照每天生成日志文件 -->
-  <appender name="DEBUG_FILE"
+  <appender name="INFO_FILE"
     class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <File>${LOG_PATH}/DEBUG.log</File>
+    <File>${LOG_PATH}/INFO.log</File>
     <rollingPolicy
       class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
       <!-- 每天一归档 -->
-      <fileNamePattern>${LOG_PATH}/info-%d{yyyyMMdd}.log.%i
-      </fileNamePattern>
+      <fileNamePattern>${LOG_PATH}/info-%d{yyyyMMdd}.log.%i</fileNamePattern>
       <!-- 单个日志文件最多100MB, 30天的日志周期，最大不能超过10GB -->
       <maxFileSize>100MB</maxFileSize>
       <maxHistory>30</maxHistory>
@@ -40,14 +35,14 @@
     </rollingPolicy>
     <encoder>
       <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
-      <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{10}-%msg%n
-      </Pattern>
+      <!-- <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{10}-%msg%n</Pattern>-->
+      <Pattern>${FILE_LOG_PATTERN}</Pattern>
     </encoder>
-    <filter class="ch.qos.logback.classic.filter.LevelFilter">
-      <level>DEBUG</level>
-      <onMatch>ACCEPT</onMatch>
-      <onMismatch>DENY</onMismatch>
-    </filter>
+    <!--    <filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+    <!--      <level>DEBUG</level>-->
+    <!--      <onMatch>ACCEPT</onMatch>-->
+    <!--      <onMismatch>DENY</onMismatch>-->
+    <!--    </filter>-->
   </appender>
 
   <!--错误信息按照每天生成日志文件 -->
@@ -62,8 +57,7 @@
     <rollingPolicy
       class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
       <!-- 每天一归档 -->
-      <fileNamePattern>${LOG_PATH}/error-%d{yyyyMMdd}.log.%i
-      </fileNamePattern>
+      <fileNamePattern>${LOG_PATH}/error-%d{yyyyMMdd}.log.%i</fileNamePattern>
       <!-- 单个日志文件最多100MB, 30天的日志周期，最大不能超过10GB -->
       <maxFileSize>100MB</maxFileSize>
       <maxHistory>30</maxHistory>
@@ -71,8 +65,8 @@
     </rollingPolicy>
     <encoder>
       <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
-      <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{10}-%msg%n
-      </Pattern>
+      <!-- <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{10}-%msg%n</Pattern>-->
+      <Pattern>${FILE_LOG_PATTERN}</Pattern>
     </encoder>
   </appender>
   <appender name="DEBUG_FILE"
@@ -85,8 +79,8 @@
       <totalSizeCap>1GB</totalSizeCap>
     </rollingPolicy>
     <layout>
-      <pattern>[%date{yyyy-MM-dd HH:mm:ss}] [%-5level] [%logger:%line]--%mdc{client} %msg%n
-      </pattern>
+      <!-- <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{10}-%msg%n</Pattern>-->
+      <Pattern>${FILE_LOG_PATTERN}</Pattern>
     </layout>
     <filter class="ch.qos.logback.classic.filter.LevelFilter">
       <level>DEBUG</level>
@@ -103,7 +97,8 @@
       <totalSizeCap>2GB</totalSizeCap>
     </rollingPolicy>
     <encoder>
-      <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %class.%method - %msg%n</pattern>
+      <!-- <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{10}-%msg%n</Pattern>-->
+      <Pattern>${FILE_LOG_PATTERN}</Pattern>
     </encoder>
   </appender>
 
@@ -142,13 +137,17 @@
   <!-- 关闭指定包的日志示例 -->
   <!--  <logger name="com.alibaba.dubbo.monitor.dubbo" level="off"></logger>-->
   <!--日志输出设置示例 -->
-<!--  <logger name="org.springframework" level="ERROR"/>-->
+  <logger name="org.apache.http" level="INFO"/>
 
   <!--邮件发送核心配置：控制哪些日志需要处理配置引用上文中配置的appender名称-->
-  <root level="INFO">
+  <!--  日志级别从低到高分为：TRACE < DEBUG < INFO < WARN < ERROR < FATAL 如果设置为 WARN ，则低于 WARN 的信息都不会输出-->
+  <!--root节点是必选节点，用来指定最基础的日志输出级别，只有一个level属性。-->
+  <root level="DEBUG">
     <appender-ref ref="console"/>
     <!-- uncomment this to have also JSON logs -->
     <!--    <appender-ref ref="logstash"/>-->
+    <appender-ref ref="INFO_FILE"/>
+    <appender-ref ref="ERROR_FILE"/>
     <appender-ref ref="DEBUG_FILE"/>
   </root>
 </configuration>
