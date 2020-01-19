@@ -49,6 +49,18 @@
       <optional>true</optional>
     </dependency>
 
+    <!--数据库相关配置-->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-boot-starter</artifactId>
+      <version>3.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.0.4</version>
+    </dependency>
+
   </dependencies>
 
   <build>
