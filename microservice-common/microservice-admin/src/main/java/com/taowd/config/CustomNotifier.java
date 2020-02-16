@@ -1,4 +1,4 @@
-package com.taowd.service;
+package com.taowd.config;
 
 import com.alibaba.fastjson.JSON;
 import de.codecentric.boot.admin.server.domain.entities.Instance;
@@ -6,7 +6,6 @@ import de.codecentric.boot.admin.server.domain.entities.InstanceRepository;
 import de.codecentric.boot.admin.server.domain.events.InstanceEvent;
 import de.codecentric.boot.admin.server.domain.events.InstanceStatusChangedEvent;
 import de.codecentric.boot.admin.server.notify.AbstractStatusChangeNotifier;
-import org.springframework.context.annotation.Configuration;
 import reactor.core.publisher.Mono;
 
 /**
@@ -18,11 +17,13 @@ public class CustomNotifier extends AbstractStatusChangeNotifier {
   public CustomNotifier(InstanceRepository repository) {
     super(repository);
   }
-  
+
   @Override
   protected Mono<Void> doNotify(InstanceEvent event, Instance instance) {
     System.out.println("InstanceEvent--->" + JSON.toJSONString(event));
     System.out.println("Instance--->" + JSON.toJSONString(instance));
+    System.out.println("InstanceNotifier--->" +
+        JSON.toJSONString(JSON.parseObject(JSON.toJSONString(instance), InstanceNotifier.class)));
 
     System.out.println(instance.getRegistration().getName().toLowerCase());
 
