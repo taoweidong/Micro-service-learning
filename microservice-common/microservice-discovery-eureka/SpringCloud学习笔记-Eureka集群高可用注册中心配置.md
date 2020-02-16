@@ -172,3 +172,4 @@ nohup java -jar microservice-discovery-eureka-0.0.1-SNAPSHOT.jar --server.port=8
 - [https://blog.csdn.net/qq_38455201/article/details/80898045](https://blog.csdn.net/qq_38455201/article/details/80898045)
 - [https://blog.csdn.net/sofeware333/article/details/90049898](https://blog.csdn.net/sofeware333/article/details/90049898)
 - [https://www.cnblogs.com/knowledgesea/p/11208000.html](https://www.cnblogs.com/knowledgesea/p/11208000.html)
+- 详细配置说明：https://www.cnblogs.com/zyon/p/11023750.html

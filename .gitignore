@@ -3,3 +3,4 @@
 /nginx-1.12.2/temp
 /microservice-webapp/src/main/resources/static
 target/
+/microservice-common/microservice-discovery-eureka/*.iml
