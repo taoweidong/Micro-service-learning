@@ -29,6 +29,7 @@
     <module>microservice-common/microservice-getway</module>
     <!--微服务监控中心-->
     <module>microservice-common/microservice-admin</module>
+    <module>microservice-common/microservice-admin-custom-ui</module>
 
     <!--服务提供者 -->
     <module>microservice-provider-user</module>
@@ -78,14 +79,14 @@
     </dependency>
   </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
+<!--  <build>-->
+<!--    <plugins>-->
+<!--      <plugin>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--      </plugin>-->
+<!--    </plugins>-->
+<!--  </build>-->
 
   <repositories>
     <repository>

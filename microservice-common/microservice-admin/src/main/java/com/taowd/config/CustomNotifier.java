@@ -6,13 +6,18 @@ import de.codecentric.boot.admin.server.domain.entities.InstanceRepository;
 import de.codecentric.boot.admin.server.domain.events.InstanceEvent;
 import de.codecentric.boot.admin.server.domain.events.InstanceStatusChangedEvent;
 import de.codecentric.boot.admin.server.notify.AbstractStatusChangeNotifier;
+import org.springframework.beans.factory.annotation.Value;
 import reactor.core.publisher.Mono;
 
 /**
  * 自定义事件通知：在这里可以进行自定义的服务上线下线通知<br/>
+ * 
  * @author Taoweidong
  */
 public class CustomNotifier extends AbstractStatusChangeNotifier {
+
+  @Value("${project.basedir}")
+  private static String dir;
 
   public CustomNotifier(InstanceRepository repository) {
     super(repository);
@@ -20,10 +25,11 @@ public class CustomNotifier extends AbstractStatusChangeNotifier {
 
   @Override
   protected Mono<Void> doNotify(InstanceEvent event, Instance instance) {
+    System.out.println("project.basedir------>" + dir);
     System.out.println("InstanceEvent--->" + JSON.toJSONString(event));
     System.out.println("Instance--->" + JSON.toJSONString(instance));
-    System.out.println("InstanceNotifier--->" +
-        JSON.toJSONString(JSON.parseObject(JSON.toJSONString(instance), InstanceNotifier.class)));
+    System.out.println("InstanceNotifier--->"
+        + JSON.toJSONString(JSON.parseObject(JSON.toJSONString(instance), InstanceNotifier.class)));
 
     System.out.println(instance.getRegistration().getName().toLowerCase());
 
@@ -34,15 +40,13 @@ public class CustomNotifier extends AbstractStatusChangeNotifier {
     }
 
     return Mono.fromRunnable(() -> {
-      //  TODO    自定义通知的具体实现
+      // TODO 自定义通知的具体实现
       if (event instanceof InstanceStatusChangedEvent) {
         String.format("Instance {} ({}) is {}", instance.getRegistration().getName(),
-            event.getInstance(),
-            ((InstanceStatusChangedEvent) event).getStatusInfo().getStatus());
+            event.getInstance(), ((InstanceStatusChangedEvent) event).getStatusInfo().getStatus());
       } else {
         String.format("Instance {} ({}) {}", instance.getRegistration().getName(),
-            event.getInstance(),
-            event.getType());
+            event.getInstance(), event.getType());
       }
     });
   }

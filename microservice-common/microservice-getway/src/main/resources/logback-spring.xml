@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
   <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-
-  <!--  springboot先读取logback.xml，然后加载yml/properties，再加载logback-spring.xml-->
+  <!--注意：如果在日志配置中用到了application.properties配置文件中的属性，则必须在log配置文件顶部，增加下面这一行-->
+  <property resource="application.properties"/>
+  <!--springboot先读取logback.xml，然后加载yml/properties，再加载logback-spring.xml-->
   <!--获取配置文件中的属性-->
   <springProperty scope="context" name="springAppName" source="spring.application.name"/>
   <!-- 定义日志文件 输入位置 -->
   <property name="LOG_PATH" value="/opt/logs/${springAppName:-.}"/>
 
   <!-- 控制台日志输出 -->
-  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
     <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
       <!-- Minimum logging level to be presented in the console logs-->
       <level>DEBUG</level>
@@ -53,7 +54,7 @@
       <onMatch>ACCEPT</onMatch>
       <onMismatch>DENY</onMismatch>
     </filter>
-    <File>${LOG_PATH}/error.log</File>
+    <File>${LOG_PATH}/ERROR.log</File>
     <rollingPolicy
       class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
       <!-- 每天一归档 -->
@@ -71,7 +72,7 @@
   </appender>
   <appender name="DEBUG_FILE"
     class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <File>${LOG_PATH}/dev.log</File>
+    <File>${LOG_PATH}/DEBUG.log</File>
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
       <fileNamePattern>${LOG_PATH}/dev-%d{yyyyMMdd}.log.%i</fileNamePattern>
       <maxFileSize>1MB</maxFileSize>
@@ -88,51 +89,6 @@
       <onMismatch>DENY</onMismatch>
     </filter>
   </appender>
-  <appender name="sql" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <File>${LOG_PATH}/sql.log</File>
-    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-      <fileNamePattern>${LOG_PATH}/log-%d{yyyyMMdd}.log.%i</fileNamePattern>
-      <maxFileSize>10MB</maxFileSize>
-      <maxHistory>30</maxHistory>
-      <totalSizeCap>2GB</totalSizeCap>
-    </rollingPolicy>
-    <encoder>
-      <!-- <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{10}-%msg%n</Pattern>-->
-      <Pattern>${FILE_LOG_PATTERN}</Pattern>
-    </encoder>
-  </appender>
-
-  <!-- Appender to log to file in a JSON format -->
-  <!--  <appender name="logstash" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
-  <!--    <file>${LOG_FILE}.json</file>-->
-  <!--    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
-  <!--      <fileNamePattern>${LOG_FILE}.json.%d{yyyy-MM-dd}.gz</fileNamePattern>-->
-  <!--      <maxHistory>7</maxHistory>-->
-  <!--    </rollingPolicy>-->
-  <!--    <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">-->
-  <!--      <providers>-->
-  <!--        <timestamp>-->
-  <!--          <timeZone>UTC</timeZone>-->
-  <!--        </timestamp>-->
-  <!--        <pattern>-->
-  <!--          <pattern>-->
-  <!--            {-->
-  <!--            "severity": "%level",-->
-  <!--            "service": "${springAppName:-}",-->
-  <!--            "trace": "%X{X-B3-TraceId:-}",-->
-  <!--            "span": "%X{X-B3-SpanId:-}",-->
-  <!--            "parent": "%X{X-B3-ParentSpanId:-}",-->
-  <!--            "exportable": "%X{X-Span-Export:-}",-->
-  <!--            "pid": "${PID:-}",-->
-  <!--            "thread": "%thread",-->
-  <!--            "class": "%logger{40}",-->
-  <!--            "rest": "%message"-->
-  <!--            }-->
-  <!--          </pattern>-->
-  <!--        </pattern>-->
-  <!--      </providers>-->
-  <!--    </encoder>-->
-  <!--  </appender>-->
 
   <!-- 关闭指定包的日志示例 -->
   <!--  <logger name="com.alibaba.dubbo.monitor.dubbo" level="off"></logger>-->
@@ -142,12 +98,23 @@
   <!--邮件发送核心配置：控制哪些日志需要处理配置引用上文中配置的appender名称-->
   <!--  日志级别从低到高分为：TRACE < DEBUG < INFO < WARN < ERROR < FATAL 如果设置为 WARN ，则低于 WARN 的信息都不会输出-->
   <!--root节点是必选节点，用来指定最基础的日志输出级别，只有一个level属性。-->
-  <root level="DEBUG">
-    <appender-ref ref="console"/>
-    <!-- uncomment this to have also JSON logs -->
-    <!--    <appender-ref ref="logstash"/>-->
-    <appender-ref ref="INFO_FILE"/>
-    <appender-ref ref="ERROR_FILE"/>
-    <appender-ref ref="DEBUG_FILE"/>
-  </root>
+
+  <springProfile name="dev">
+    <root level="DEBUG">
+      <appender-ref ref="CONSOLE"/>
+      <!--<appender-ref ref="INFO_FILE"/>-->
+      <!--<appender-ref ref="ERROR_FILE"/>-->
+      <!--<appender-ref ref="DEBUG_FILE"/>-->
+    </root>
+  </springProfile>
+
+  <springProfile name="pro">
+    <root level="info">
+      <appender-ref ref="INFO_FILE"/>
+      <appender-ref ref="ERROR_FILE"/>
+      <appender-ref ref="DEBUG_FILE"/>
+    </root>
+  </springProfile>
+
+
 </configuration>

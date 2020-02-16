@@ -15,6 +15,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableAdminServer
 public class AdminApp {
 
+
   /**
    * 启动类
    * @param args
@@ -22,5 +23,7 @@ public class AdminApp {
   public static void main(String[] args) {
 
     SpringApplication.run(AdminApp.class, args);
+
+ 
   }
 }
