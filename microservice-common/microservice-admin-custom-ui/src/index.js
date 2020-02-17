@@ -25,7 +25,7 @@ SBA.use({
       name: 'custom',  //<1>
       path: '/custom', //<2>
       component: custom, //<3>
-      label: '自制UI', //<4>
+      label: '自制UI001', //<4>
       order: 1000, //<5>
     });
   }
