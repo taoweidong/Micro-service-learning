@@ -16,7 +16,7 @@
 
 <template>
   <div class="custom">
-    <p>Instance: <span v-text="instance.id" /></p>
+    <h1>Hello endPoint</h1>
     <p>Output: <span v-text="text" /></p>
   </div>
 </template>

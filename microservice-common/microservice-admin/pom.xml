@@ -64,11 +64,11 @@
     </dependency>
 
     <!--自定义UI页面-->
-    <dependency>
-      <groupId>com.taowd</groupId>
-      <artifactId>microservice-admin-custom-ui</artifactId>
-      <version>1.0.0</version>
-    </dependency>
+    <!--    <dependency>-->
+    <!--      <groupId>com.taowd</groupId>-->
+    <!--      <artifactId>microservice-admin-custom-ui</artifactId>-->
+    <!--      <version>1.0.0</version>-->
+    <!--    </dependency>-->
 
     <!--    <dependency>-->
     <!--      <groupId>org.springframework.boot</groupId>-->
@@ -100,6 +100,32 @@
           </execution>
         </executions>
       </plugin>
+      <!--      &lt;!&ndash;资源插件，主要为了从前端项目里复制打包好的文件到springboot项目&ndash;&gt;-->
+      <!--      <plugin>-->
+      <!--        <groupId>org.apache.maven.plugins</groupId>-->
+      <!--        <artifactId>maven-resources-plugin</artifactId>-->
+      <!--        <executions>-->
+      <!--          <execution>-->
+      <!--            <id>copy static</id>-->
+      <!--            <phase>package</phase>-->
+      <!--            <goals>-->
+      <!--              <goal>copy-resources</goal>-->
+      <!--            </goals>-->
+      <!--            <configuration>-->
+      <!--              <outputDirectory>src/main/resources/extensions/custom</outputDirectory>-->
+      <!--              <overwrite>true</overwrite>-->
+      <!--              <resources>-->
+      <!--                <resource>-->
+      <!--                  &lt;!&ndash;因为vue-cli打包的目录在项目的根目录，所以从这里复制&ndash;&gt;-->
+      <!--                  <directory>microservice-admin-custom-ui/target/dist</directory>-->
+      <!--                  <filtering>false</filtering>-->
+      <!--                </resource>-->
+      <!--              </resources>-->
+      <!--            </configuration>-->
+      <!--          </execution>-->
+
+      <!--        </executions>-->
+      <!--      </plugin>-->
     </plugins>
   </build>
 

@@ -16,15 +16,13 @@
 
 <template>
   <pre>
-    <button @click="sayHello">Hello</button>
-    <h2>{{ msg }}</h2>
+    <button @click="sayHello">myCustom</button>
 
     <span v-text="stringify(applications, null, 4)" />
   </pre>
 </template>
 
 <script>
-import axios from "axios";
 export default {
   props: {
     applications: {
@@ -33,28 +31,10 @@ export default {
       required: true
     }
   },
-  data: () => ({
-    msg: "HHHHHHH"
-  }),
   created() {},
   methods: {
     stringify: JSON.stringify,
-    sayHello: function() {
-      axios
-        .get("/actuator/custom")
-        .then(function(response) {
-          console.log("then中的结果：" + response.data);
-          this.msg = JSON.stringify(response.data);
-          return response.data;
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-
-      // const response = axios.get("/actuator/custom"); //<2>
-      console.log("数据获取结果：" + data);
-      this.msg = JSON.stringify(data);
-    }
+    sayHello: function() {}
   }
 };
 </script>

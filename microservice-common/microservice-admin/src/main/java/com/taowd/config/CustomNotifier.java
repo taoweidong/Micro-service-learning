@@ -1,12 +1,14 @@
 package com.taowd.config;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.alibaba.fastjson.JSON;
+
 import de.codecentric.boot.admin.server.domain.entities.Instance;
 import de.codecentric.boot.admin.server.domain.entities.InstanceRepository;
 import de.codecentric.boot.admin.server.domain.events.InstanceEvent;
 import de.codecentric.boot.admin.server.domain.events.InstanceStatusChangedEvent;
 import de.codecentric.boot.admin.server.notify.AbstractStatusChangeNotifier;
-import org.springframework.beans.factory.annotation.Value;
 import reactor.core.publisher.Mono;
 
 /**
@@ -28,8 +30,6 @@ public class CustomNotifier extends AbstractStatusChangeNotifier {
     System.out.println("project.basedir------>" + dir);
     System.out.println("InstanceEvent--->" + JSON.toJSONString(event));
     System.out.println("Instance--->" + JSON.toJSONString(instance));
-    System.out.println("InstanceNotifier--->"
-        + JSON.toJSONString(JSON.parseObject(JSON.toJSONString(instance), InstanceNotifier.class)));
 
     System.out.println(instance.getRegistration().getName().toLowerCase());
 
