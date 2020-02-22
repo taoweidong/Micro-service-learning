@@ -34,10 +34,8 @@
     <module>microservice-oauth/microservice-oauth-web</module>
     <module>microservice-oauth/microservice-oauth-service</module>
 
-    <!--服务提供者 -->
-    <module>microservice-provider-user</module>
-    <!--服务消费者 -->
-    <module>microservice-consume-movie</module>
+    <!--业务功能模块 -->
+    <module>microservice-functions</module>
     <!--服务消费者 -->
     <module>microservice-webapp</module>
   </modules>

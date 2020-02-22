@@ -4,34 +4,32 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.taowd</groupId>
-  <artifactId>microservice-consume-movie</artifactId>
+  <artifactId>microservice-provider-user</artifactId>
   <packaging>jar</packaging>
 
-  <name>microservice-consume-movie</name>
-  <description>服务消费者,整合feign和Hystrix,使用fallbackFactory返回失败的原因</description>
+  <name>microservice-provider-user</name>
+  <description>服务提供者</description>
 
   <parent>
     <groupId>com.taowd</groupId>
-    <artifactId>Micro-service-learning</artifactId>
-    <version>1.0</version>
-    <!--指定父工程的Pom文件的位置-->
-    <relativePath>../pom.xml</relativePath>
+    <artifactId>microservice-functions</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
   </parent>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
-    <project.name>microservice-consume-movie</project.name>
   </properties>
 
   <dependencies>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
+    <!--Eureka客户端jar包 -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -41,11 +39,28 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
-    <!--声明式的Http客户端调用-->
+
+    <!-- 添加依赖-->
     <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-openfeign</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入
+          -->
+      <optional>true</optional>
     </dependency>
+
+    <!--数据库相关配置-->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-boot-starter</artifactId>
+      <version>3.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.0.4</version>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -55,9 +70,6 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-          <finalName>${project.name}</finalName>
-        </configuration>
         <executions>
           <execution>
             <goals>
