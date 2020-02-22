@@ -31,7 +31,8 @@
     <module>microservice-common/microservice-admin</module>
     <module>microservice-common/microservice-admin-custom-ui</module>
     <!--SSO-->
-    <module>microservice-oauth-server/microservice-oauth-web</module>
+    <module>microservice-oauth/microservice-oauth-web</module>
+    <module>microservice-oauth/microservice-oauth-service</module>
 
     <!--服务提供者 -->
     <module>microservice-provider-user</module>
