@@ -2,43 +2,44 @@ package com.taowd.entity;
 
 /**
  * 用户信息
+ * 
  * @author Taoweidong
  */
 public class User {
 
-	private Integer id;
+  private Integer id;
 
-	private String name;
+  private String name;
 
-	private Integer age;
+  private Integer age;
 
-	public Integer getId() {
+  public Integer getId() {
 
-		return id;
-	}
+    return id;
+  }
 
-	public void setId(Integer id) {
+  public void setId(Integer id) {
 
-		this.id = id;
-	}
+    this.id = id;
+  }
 
-	public String getName() {
+  public String getName() {
 
-		return name;
-	}
+    return name;
+  }
 
-	public void setName(String name) {
+  public void setName(String name) {
 
-		this.name = name;
-	}
+    this.name = name;
+  }
 
-	public Integer getAge() {
+  public Integer getAge() {
 
-		return age;
-	}
+    return age;
+  }
 
-	public void setAge(Integer age) {
+  public void setAge(Integer age) {
 
-		this.age = age;
-	}
+    this.age = age;
+  }
 }

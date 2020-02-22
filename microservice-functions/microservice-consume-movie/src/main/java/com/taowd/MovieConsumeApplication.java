@@ -15,13 +15,13 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients
 public class MovieConsumeApplication {
 
-    /**
-     * 主函数
-     * 
-     * @param args
-     */
-    public static void main(String[] args) {
+  /**
+   * 主函数
+   * 
+   * @param args
+   */
+  public static void main(String[] args) {
 
-        SpringApplication.run(MovieConsumeApplication.class, args);
-    }
+    SpringApplication.run(MovieConsumeApplication.class, args);
+  }
 }

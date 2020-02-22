@@ -1,8 +1,11 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>这是一个基于Vue和SpringBoot混合的项目，由vue进行前台开发，SpringBoot作为容器装载前台页面呈现</h2>
+    <h2>
+      这是一个基于Vue和SpringBoot混合的项目，由vue进行前台开发，SpringBoot作为容器装载前台页面呈现
+    </h2>
     <el-button type="success" @click="showMsg">成功按钮</el-button>
+    <el-button type="success" @click="getConsume">获取服务消费者按钮</el-button>
   </div>
 </template>
 
@@ -29,6 +32,17 @@ export default {
       });
 
       // this.$message("这是一条消息提示");
+    },
+    getConsume: function() {
+      getRequest("/consume/say", {}).then(resp => {
+        console.log(JSON.stringify(resp.data));
+        this.msg = this.msg + "\n" + JSON.stringify(resp.data);
+
+        this.$notify({
+          title: "消息",
+          message: JSON.stringify(resp.data)
+        });
+      });
     }
   }
 };

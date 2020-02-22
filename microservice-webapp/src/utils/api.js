@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-let base = '/ms/user';
+let base = '/ms';
 export const postRequest = (url, params) => {
   return axios({
     method: 'post',

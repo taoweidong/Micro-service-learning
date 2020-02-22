@@ -19,49 +19,49 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
-    @Autowired
-    private UserFeignClient userFeignClient;
+  @Autowired
+  private UserFeignClient userFeignClient;
 
-    @Autowired
-    private DiscoveryClient discoveryClient;
+  @Autowired
+  private DiscoveryClient discoveryClient;
 
-    @GetMapping("/say")
-    public String say() {
-        return "Hello  这里是本地提供的服务，没有进行调用服务提供者！";
-    }
+  @GetMapping("/say")
+  public String say() {
+    return "Hello  这里是本地提供的服务，没有进行调用服务提供者！";
+  }
 
-    @GetMapping("/say2")
-    public String say2() {
-        // 使用最基本的restTemplate进行服务间通讯
-        return userFeignClient.sayHello();
-    }
+  @GetMapping("/say2")
+  public String say2() {
+    // 使用最基本的restTemplate进行服务间通讯
+    return userFeignClient.sayHello();
+  }
 
-    @GetMapping("/getUserInfo")
-    public User getUser() {
-        return userFeignClient.getUserInfo();
-    }
+  @GetMapping("/getUserInfo")
+  public User getUser() {
+    return userFeignClient.getUserInfo();
+  }
 
-    /**
-     * 注册中心服务列表获取
-     * 
-     * @return
-     */
-    @GetMapping("/getEurekaService")
-    public User getEurekaService() {
+  /**
+   * 注册中心服务列表获取
+   * 
+   * @return
+   */
+  @GetMapping("/getEurekaService")
+  public User getEurekaService() {
 
-        List<String> services = discoveryClient.getServices();
-        services.stream().forEach(x -> {
-            List<ServiceInstance> instances = discoveryClient.getInstances(x);
-            instances.stream().forEach(item -> {
-                System.out.println(JSON.toJSONString(item));
+    List<String> services = discoveryClient.getServices();
+    services.stream().forEach(x -> {
+      List<ServiceInstance> instances = discoveryClient.getInstances(x);
+      instances.stream().forEach(item -> {
+        System.out.println(JSON.toJSONString(item));
 
-                EurekaEntity eurekaEntity = JSON.parseObject(JSON.toJSONString(item), EurekaEntity.class);
+        EurekaEntity eurekaEntity = JSON.parseObject(JSON.toJSONString(item), EurekaEntity.class);
 
-                System.out.println("实体转换：" + JSON.toJSONString(eurekaEntity));
+        System.out.println("实体转换：" + JSON.toJSONString(eurekaEntity));
 
-            });
-        });
+      });
+    });
 
-        return userFeignClient.getUserInfo();
-    }
+    return userFeignClient.getUserInfo();
+  }
 }
